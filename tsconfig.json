@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
-        "outDir": "dist/js", 
-        "target": "ESNext", 
+        "outDir": "app/dist/js",
+        "target": "ESNext",
         "noEmitOnError": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "removeComments": true,
+        "strictNullChecks": true
     },
-    "include": ["app/**/*"]
+    "include": ["app/src/**/*"]
 }

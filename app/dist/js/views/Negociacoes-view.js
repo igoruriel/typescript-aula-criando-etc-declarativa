@@ -1,10 +1,7 @@
-import { Negociacoes } from "../models/Negociacoes.js";
 import { View } from "./Views.js";
-
-export class NegociacoesViews extends View<Negociacoes>{
-    protected template(modelo: Negociacoes): string {
-        return (
-            `
+export class NegociacoesViews extends View {
+    template(modelo) {
+        return (`
             <table class="table table-hover table-border">
                 <thead>
                     <tr>
@@ -15,19 +12,21 @@ export class NegociacoesViews extends View<Negociacoes>{
                 </thead>
                 <tbody>
                 ${modelo.lista().map(neg => {
-                return (
-                    `
+            return (`
                             <tr>
                                 <td>${new Intl.DateTimeFormat().format(neg.data)}</td>
                                 <td>${neg.quantidade}</td>
                                 <td>${neg.valor}</td>
                             </tr>
-                        `
-                )
-            }).join('')}
+                        `);
+        }).join('')}
                 </tbody>
             </table>
-            `
-        )
+            <script>alert('oi')</script>
+            <script>alert('oi')</script>
+            <script>alert('oi')</script>
+            <script>alert('oi')</script>
+            <script>alert('oi')</script>
+            `);
     }
 }
