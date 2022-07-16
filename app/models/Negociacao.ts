@@ -25,4 +25,17 @@ export class Negociacao {
     get volume(): number {
         return this.#quantidade * this.#valor
     }
+
+    // exemplo de como um metodo static funciona. 
+    public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
+            const exp = /-/g;
+            const data = new Date(dataString.replace(exp, ','));
+            const quantidade = parseInt(quantidadeString);
+            const valor = parseFloat(valorString);
+            return new Negociacao(
+                data,
+                quantidade,
+                valor
+            )
+        }
 }

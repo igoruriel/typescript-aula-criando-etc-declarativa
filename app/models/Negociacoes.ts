@@ -1,9 +1,9 @@
 import { Negociacao } from "./Negociacao.js";
 
 export class Negociacoes {
-    #negociacoes: Array<Negociacao> /* Negociacao[] */= [];
+    #negociacoes: Array<Negociacao> /* Negociacao[] */ = [];
 
-    adiciona(negociacao: Negociacao):void {
+    adiciona(negociacao: Negociacao): void {
         this.#negociacoes.push(negociacao);
     }
 
