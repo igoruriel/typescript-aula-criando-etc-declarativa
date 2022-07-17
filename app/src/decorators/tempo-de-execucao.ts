@@ -1,9 +1,5 @@
 export function tempoDeExecucao () {
-    return function(
-        target: any,
-        propertyKey: string,
-        descriptor: PropertyDescriptor
-    ) {
+    return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
         const metodoOriginal = descriptor.value; 
         descriptor.value = function(...args: Array<any>) {
             const t1 = performance.now();

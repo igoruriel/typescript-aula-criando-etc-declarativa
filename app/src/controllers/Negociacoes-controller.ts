@@ -1,3 +1,4 @@
+import { inspetor } from "../decorators/inspector.js";
 import { tempoDeExecucao } from "../decorators/tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/Negociacao.js";
@@ -10,7 +11,7 @@ export class NegociacoesController {
     #inputQuantidade: HTMLInputElement;
     #inputValor: HTMLInputElement;
     #negociacoes = new Negociacoes();
-    #negociacoesViews = new NegociacoesViews('[data-id="negociacoesViews"]', true);
+    #negociacoesViews = new NegociacoesViews('[data-id="negociacoesViews"]');
     #mensagemView = new MensagemView('[data-id="mensagemView"]');
 
     constructor() {
@@ -21,6 +22,7 @@ export class NegociacoesController {
     }
 
     @tempoDeExecucao()
+    @inspetor()
     public adiciona(): void {
         // métodos statics: o método pode ser chamado atraves do nome da Classe, sem o static não é possível teria que criar uma new Negociacao(.., .., ..).criaDe(etc..)
         // const negociacao = Negociacao.criaDe(this.#inputData.value, this.#inputQuantidade.value, this.#inputValor.value)
@@ -53,6 +55,7 @@ export class NegociacoesController {
         this.#inputData.focus();
     }
 
+    @inspetor()
     private atualizaUpdate(): void {
         this.#negociacoesViews.update(this.#negociacoes);
         this.#mensagemView.update('Negociação adicionada com sucesso.')
