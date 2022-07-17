@@ -1,3 +1,4 @@
+import { tempoDeExecucao } from "../decorators/tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/Negociacao.js";
 import { Negociacoes } from "../models/Negociacoes.js";
@@ -19,6 +20,7 @@ export class NegociacoesController {
         this.#negociacoesViews.update(this.#negociacoes);
     }
 
+    @tempoDeExecucao()
     public adiciona(): void {
         // métodos statics: o método pode ser chamado atraves do nome da Classe, sem o static não é possível teria que criar uma new Negociacao(.., .., ..).criaDe(etc..)
         // const negociacao = Negociacao.criaDe(this.#inputData.value, this.#inputQuantidade.value, this.#inputValor.value)
