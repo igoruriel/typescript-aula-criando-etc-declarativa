@@ -11,6 +11,9 @@ export class Negociacao {
     get volume() {
         return this.quantidade * this.valor;
     }
+    paraTexto() {
+        return `retorna um texto mesmo ${this.data}`;
+    }
     static criaNegociacao(dataString, quantidadeString, valorString) {
         const exp = /-/g;
         const data = new Date(dataString.replace(exp, ','));

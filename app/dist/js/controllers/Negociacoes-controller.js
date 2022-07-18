@@ -8,6 +8,8 @@ import { domInject } from "../decorators/dom-inject.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/Negociacao.js";
 import { Negociacoes } from "../models/Negociacoes.js";
+import { NegociacoesServices } from "../services/Negociacoes-services.js";
+import { imprimir } from "../utils/imprimir.js";
 import { MensagemView } from "../views/Mensagem-view.js";
 import { NegociacoesViews } from "../views/Negociacoes-view.js";
 export class NegociacoesController {
@@ -15,6 +17,7 @@ export class NegociacoesController {
         this.negociacoes = new Negociacoes();
         this.negociacoesViews = new NegociacoesViews('[data-id="negociacoesViews"]');
         this.mensagemView = new MensagemView('[data-id="mensagemView"]');
+        this.negociacoesDoDia = new NegociacoesServices();
         this.negociacoesViews.update(this.negociacoes);
     }
     adiciona() {
@@ -24,8 +27,19 @@ export class NegociacoesController {
             return;
         }
         this.negociacoes.adiciona(negociacao);
+        imprimir(negociacao);
         this.atualizaUpdate();
         this.limpaFormulario();
+    }
+    importaDados() {
+        this.negociacoesDoDia
+            .obterNegociacoesDoDia()
+            .then(negociacoesDeHoje => {
+            for (let negociacao of negociacoesDeHoje) {
+                this.negociacoes.adiciona(negociacao);
+            }
+            this.negociacoesViews.update(this.negociacoes);
+        });
     }
     limpaFormulario() {
         this.inputData.value = '';

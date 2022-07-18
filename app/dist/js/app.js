@@ -10,3 +10,12 @@ if (form) {
 else {
     throw Error("Verifique se existe o elemtenos");
 }
+const botaoImportar = document.querySelector('[data-id="btn-importar"]');
+if (botaoImportar) {
+    botaoImportar.addEventListener('click', () => {
+        controller.importaDados();
+    });
+}
+else {
+    throw Error("verifique este erro");
+}

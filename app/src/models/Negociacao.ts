@@ -14,6 +14,10 @@ export class Negociacao {
         return this.quantidade * this.valor
     }
 
+    public paraTexto (): string {
+        return `retorna um texto mesmo ${this.data}`
+    }
+
     // exemplo de como um metodo static funciona. 
     public static criaNegociacao(dataString: string, quantidadeString: string, valorString: string): Negociacao {
             const exp = /-/g;
