@@ -1,10 +1,12 @@
-export class Negociacao {
+import { Modelo } from "../interfaces/Modelo.js";
+
+export class Negociacao implements Modelo<Negociacao>{
     constructor(
         private _data: Date,
         public readonly quantidade: number, 
         public readonly valor: number
     ) {}
-
+    
     get data(): Date {
         const data = new Date(this._data.getTime());
         return data
@@ -12,10 +14,6 @@ export class Negociacao {
 
     get volume(): number {
         return this.quantidade * this.valor
-    }
-
-    public paraTexto (): string {
-        return `retorna um texto mesmo ${this.data}`
     }
 
     // exemplo de como um metodo static funciona. 
@@ -26,4 +24,14 @@ export class Negociacao {
             const valor = parseFloat(valorString);
             return new Negociacao(data,quantidade,valor)
         }
+        
+    public paraTexto (): string {
+        return `retorna um texto mesmo ${this.data}`
+    }
+
+    public comparaItens(objeto: Negociacao): boolean {
+        return this.data.getDate() === objeto.data.getDate()
+            && this.data.getMonth() === objeto.data.getMonth()
+            && this.data.getFullYear() === objeto.data.getFullYear();
+    }
 }
